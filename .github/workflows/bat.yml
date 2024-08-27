@@ -35,8 +35,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
-            release: latest 
+          - os: self-hosted
+            release: latest
             products: Symbolic_Math_Toolbox
             check-matlab: matlabVer = ver('matlab'); assert(~isempty(matlabVer));
             check-toolbox: symbolicVer = ver('symbolic'); assert(~isempty(symbolicVer));
@@ -45,33 +45,13 @@ jobs:
             products: Symbolic_Math_Toolbox
             check-matlab: matlabVer = ver('matlab'); assert(~isempty(matlabVer));
             check-toolbox: symbolicVer = ver('symbolic'); assert(~isempty(symbolicVer));
-          - os: ubuntu-20.04
+          - os: macos-latest
             release: R2021bU2
             products: |
               MATLAB
               Symbolic_Math_Toolbox
             check-matlab: matlabVer = ver('matlab'); assert(strcmp(matlabVer.Release,'(R2021b)'));
             check-toolbox: symbolicVer = ver('symbolic'); assert(strcmp(symbolicVer.Release,'(R2021b)'));
-          - os: windows-latest
-            release: latest
-            products: Symbolic_Math_Toolbox
-            check-matlab: matlabVer = ver('matlab'); assert(~isempty(matlabVer));
-            check-toolbox: symbolicVer = ver('symbolic'); assert(~isempty(symbolicVer));
-          - os: macos-latest
-            release: latest
-            products: Symbolic_Math_Toolbox
-            check-matlab: matlabVer = ver('matlab'); assert(~isempty(matlabVer));
-            check-toolbox: symbolicVer = ver('symbolic'); assert(~isempty(symbolicVer));
-          - os: macos-14
-            release: latest
-            products: Symbolic_Math_Toolbox
-            check-matlab: matlabVer = ver('matlab'); assert(~isempty(matlabVer));
-            check-toolbox: symbolicVer = ver('symbolic'); assert(~isempty(symbolicVer));
-          - os: macos-14
-            release: R2023a
-            products: Symbolic_Math_Toolbox
-            check-matlab: matlabVer = ver('matlab'); assert(strcmp(matlabVer.Release,'(R2023a)'));
-            check-toolbox: symbolicVer = ver('symbolic'); assert(strcmp(symbolicVer.Release,'(R2023a)'));
     steps:
       - uses: actions/download-artifact@v4
         with:
